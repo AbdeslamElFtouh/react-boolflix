@@ -1,23 +1,23 @@
-function SearchResults({movies}) {
+function SearchResults({allFictions}) {
     return (
         <>
             <ul>
-                {movies.map((movie) => (
-                    <li key={movie.id}>
+                {allFictions.map((fiction) => (
+                    <li key={fiction.id}>
                         <h2>
-                            {movie.title}
+                            {fiction.title?fiction.title:fiction.name}
                         </h2>
                         <p>
-                            <strong>Titolo originale:</strong>
-                            {movie.original_title}
+                            <strong>Titolo originale: </strong>
+                            {fiction.original_title?fiction.original_title:fiction.original_name}
                         </p>
                         <p>
-                            <strong>Lingua:</strong>
-                            {movie.original_language}
+                            <strong>Lingua: </strong>
+                            {fiction.original_language}
                         </p>
                         <p>
-                            <strong>Voto:</strong>
-                            {movie.vote_average}
+                            <strong>Voto: </strong>
+                            {fiction.vote_average}
                         </p>
                     </li>
                 ))}
