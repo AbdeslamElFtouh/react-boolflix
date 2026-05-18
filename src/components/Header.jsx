@@ -1,9 +1,26 @@
+// CREARE MODULE.CSS 
+
 function Header() {
-    return(
+    
+    console.log(API_KEY);
+    
+
+    return (
         <>
-            <h1>ciao l'header e qui va la serach bar e il suo button</h1>
+            <h1>Ciao sono l'header. COMPONENTI: searchBar e il suo Button</h1>
+
+            <h1>TITOLo o LOGO</h1>
+            <div className=''>
+                <input
+                    type='text'
+                    value={}
+                    onChange={}
+                    placeholder='Cerca un film'
+                />
+                <button onClick='' className=''>Cerca</button>
+            </div>
         </>
     )
 }
-
 export default Header;
+
