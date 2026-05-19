@@ -54,7 +54,7 @@ function SearchResults({ allFictions }) {
                                 <strong>Lingua: </strong>
                                 <span>
                                     {langFlag[original_language] ? (
-                                        langFlag[original_language] + ' ' + '(' + original_language + ')'
+                                        `${langFlag[original_language]} (${original_language})`
                                     ) : (
                                         (original_language)
                                     )}

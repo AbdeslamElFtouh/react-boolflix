@@ -43,7 +43,7 @@ function App() {
   };
 
   const fetchAllFictionsHandler = () => {
-    return Promise.all([fetchMovies(), fetchSeries()]);
+    return (fetchMovies(), fetchSeries());
   }
 
   const allFictions = [...movies, ...series]
