@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import SearchBar from '../components/SearchBar.jsx'
+
 function MainLayout({search, searchHandler, fetchAllFictionsHandler}) {
     return (
         <>
