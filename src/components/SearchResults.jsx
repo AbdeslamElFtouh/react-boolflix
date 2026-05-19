@@ -1,24 +1,23 @@
 const langFlag = {
-    en: '🇬🇧',
-    fr: '🇫🇷',
-    de: '🇩🇪',
-    es: '🇪🇸',
-    it: '🇮🇹',
-    pt: '🇵🇹',
-    ru: '🇷🇺',
-    zh: '🇨🇳',
-    hi: '🇮🇳',
-    ja: '🇯🇵',
-    ko: '🇰🇷',
-    ar: '🇸🇦',
-    br: '🇧🇷',
+    en: 'gb',
+    fr: 'fr',
+    de: 'de',
+    es: 'es',
+    it: 'it',
+    pt: 'pt',
+    ru: 'ru',
+    zh: 'cn',
+    hi: 'in',
+    ja: 'jp',
+    ko: 'kr',
+    ar: 'sa',
+    br: 'br',
 };
 
 const IMG_URL = 'https://image.tmdb.org/t/p/';
 const img_url_dimension = 'w342'
 
 function SearchResults({ allFictions }) {
-
     return (
         <>
             <ul>
@@ -33,6 +32,21 @@ function SearchResults({ allFictions }) {
                         poster_path,
                     } = fiction;
 
+                    /* Logica recensione in stelle */
+                    const votoInQuinti = Number((Math.round(vote_average) / 2).toFixed(1));
+
+                    const votoInStelle = [];
+
+                    for (let i = 1; i <= 5; i++) {
+                        if (votoInQuinti >= i) {
+                            votoInStelle.push(<i className='bi bi-star-fill text-warning'></i>);
+                        } else if (votoInQuinti >= i - 0.5) {
+                            votoInStelle.push(<i className='bi bi-star-half text-warning'></i>);
+                        } else {
+                            votoInStelle.push(<i className='bi bi-star text-warning'></i>);
+                        }
+                    }
+
                     return (
                         <li key={id}>
                             {poster_path ? (
@@ -41,7 +55,10 @@ function SearchResults({ allFictions }) {
                                     alt={title ? title : name}
                                 />
                             ) : (
-                                <div>La copertina non è disponibile</div>
+                                <img
+                                    src='PlaceholderCopertinaAssente.jpg'
+                                    alt="Placeholder Copertina Assente"
+                                />
                             )}
                             <h2>
                                 {title ? title : name}
@@ -52,17 +69,15 @@ function SearchResults({ allFictions }) {
                             </p>
                             <p>
                                 <strong>Lingua: </strong>
-                                <span>
-                                    {langFlag[original_language] ? (
-                                        `${langFlag[original_language]} (${original_language})`
-                                    ) : (
-                                        (original_language)
-                                    )}
-                                </span>
+                                {langFlag[original_language] ? (
+                                    <span className={`fi fi-${langFlag[original_language]}`}></span>
+                                ) : (
+                                    original_language
+                                )}
                             </p>
                             <p>
                                 <strong>Voto: </strong>
-                                {(Math.round(vote_average)/2).toFixed(1)}
+                                {votoInStelle}
                             </p>
                         </li>
                     )
@@ -73,3 +88,4 @@ function SearchResults({ allFictions }) {
 }
 
 export default SearchResults;
+

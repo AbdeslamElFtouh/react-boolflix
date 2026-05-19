@@ -16,11 +16,15 @@ function App() {
   const [series, setSeries] = useState([]);
 
   const fetchMovies = () => {
+    console.log('orainizioa afetchare')
     return fetch(`${MOVIE_API_URL}?api_key=${API_KEY}&query=${search}`)
       .then((response) => {
+        
         return response.json()
       })
       .then((data) => {
+        console.log('ho fetchato i film')
+        console.log(data.results)
         setMovies(data.results);
       })
       .catch((error) => {
@@ -42,7 +46,7 @@ function App() {
       });
   };
 
-  const fetchAllFictionsHandler = () => {
+  const allFictionsHandler = () => {
     return (fetchMovies(), fetchSeries());
   }
 
@@ -62,7 +66,7 @@ function App() {
           <MainLayout
             search={search}
             searchHandler={searchHandler}
-            fetchAllFictionsHandler={fetchAllFictionsHandler}
+            allFictionsHandler={allFictionsHandler}
           />
         }>
 

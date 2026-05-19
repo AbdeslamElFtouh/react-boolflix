@@ -1,6 +1,6 @@
 // CREARE MODULE.CSS 
 
-function SearchBar({search, searchHandler, fetchAllFictionsHandler}) {
+function SearchBar({search, searchHandler, allFictionsHandler}) {
     
     return (
         <>
@@ -12,7 +12,7 @@ function SearchBar({search, searchHandler, fetchAllFictionsHandler}) {
                     onChange={searchHandler}
                     placeholder='Cerca un film'
                 />
-                <button onClick={fetchAllFictionsHandler}>Cerca</button>
+                <button onClick={allFictionsHandler}>Cerca</button>
             </div>
         </>
     )
