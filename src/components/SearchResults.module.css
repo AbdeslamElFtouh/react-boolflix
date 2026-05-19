@@ -1,0 +1,25 @@
+/* Definiamo le dimensioni fisse del tag li che fa da card */
+.cardContainer {
+    width: 280px;
+    height: 420px;
+    cursor: pointer;
+}
+
+/* L'overlay è inizialmente invisibile (opacità a 0) */
+.infoOverlay {
+    background: rgba(163, 15, 15, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* L'overlay diventa visibile quando si va in hover sulla card (opacità a 1) */
+.cardContainer:hover .infoOverlay {
+    opacity: 1;
+}
+
+.overview {
+    max-height: 120px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+

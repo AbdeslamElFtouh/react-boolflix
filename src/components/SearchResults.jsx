@@ -1,3 +1,5 @@
+import styles from './SearchResults.module.css';
+
 const langFlag = {
     en: 'gb',
     fr: 'fr',
@@ -19,7 +21,7 @@ const img_url_dimension = 'w342'
 function SearchResults({ allFictions }) {
     return (
         <>
-            <ul>
+            <ul className="d-flex flex-wrap justify-content-center gap-4 bg-dark p-4 list-unstyled">
                 {allFictions.map((fiction) => {
                     const { id,
                         title,
@@ -29,9 +31,9 @@ function SearchResults({ allFictions }) {
                         original_language,
                         vote_average,
                         poster_path,
+                        overview
                     } = fiction;
 
-                    /* Logica recensione in stelle */
                     const votoInQuinti = Number((Math.round(vote_average) / 2).toFixed(1));
 
                     const votoInStelle = [];
@@ -47,37 +49,45 @@ function SearchResults({ allFictions }) {
                     }
 
                     return (
-                        <li key={id}>
+                        <li key={id} className={`position-relative overflow-hidden rounded text-white ${styles.cardContainer}`}>
                             {poster_path ? (
                                 <img
                                     src={`${IMG_URL}${img_url_dimension}${poster_path}`}
                                     alt={title ? title : name}
+                                    className='w-100 h-100 object-fit-cover'
                                 />
                             ) : (
                                 <img
                                     src='PlaceholderCopertinaAssente.jpg'
                                     alt="Placeholder Copertina Assente"
+                                    className="w-100 h-100 object-fit-cover"
                                 />
                             )}
-                            <h2>
-                                {title ? title : name}
-                            </h2>
-                            <p>
-                                <strong>Titolo originale: </strong>
-                                {original_title ? original_title : original_name}
-                            </p>
-                            <p>
-                                <strong>Lingua: </strong>
-                                {langFlag[original_language] ? (
-                                    <span className={`fi fi-${langFlag[original_language]}`}></span>
-                                ) : (
-                                    original_language
-                                )}
-                            </p>
-                            <p>
-                                <strong>Voto: </strong>
-                                {votoInStelle}
-                            </p>
+                            <div className={`position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3 ${styles.infoOverlay}`}>
+                                <h2 className="fs-3 fw-bold mb-2">
+                                    {title ? title : name}
+                                </h2>
+                                <p className="fs-6 mb-1">
+                                    <strong>Titolo originale: </strong>
+                                    {original_title ? original_title : original_name}
+                                </p>
+                                <p className="fs-6 mb-1 d-flex gap-2">
+                                    <strong>Lingua: </strong>
+                                    {langFlag[original_language] ? (
+                                        <span className={`fi fi-${langFlag[original_language]}`}></span>
+                                    ) : (
+                                        original_language
+                                    )}
+                                </p>
+                                <p className="fs-6 mb-1">
+                                    <strong>Voto: </strong>
+                                    {votoInStelle}
+                                </p>
+                                <hr />
+                                <p className={`small mt-1 ${styles.overview}`}>
+                                    {overview}
+                                </p>
+                            </div>
                         </li>
                     )
                 })}
@@ -87,4 +97,3 @@ function SearchResults({ allFictions }) {
 }
 
 export default SearchResults;
-
