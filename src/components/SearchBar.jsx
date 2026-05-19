@@ -1,18 +1,22 @@
-// CREARE MODULE.CSS 
+function SearchBar({ search, searchHandler, allFictionsHandler }) {
 
-function SearchBar({search, searchHandler, allFictionsHandler}) {
-    
     return (
         <>
-            <h1>Boolflix</h1>
-            <div>
+            <div className="d-flex align-items-center">
                 <input
-                    type='text'
+                    type="text"
                     value={search}
                     onChange={searchHandler}
-                    placeholder='Cerca un film'
+                    placeholder="Cerca un film"
+                    className="form-control"
                 />
-                <button onClick={allFictionsHandler}>Cerca</button>
+
+                <button
+                    onClick={allFictionsHandler}
+                    className="btn btn-primary m-3"
+                >
+                    Cerca
+                </button>
             </div>
         </>
     )

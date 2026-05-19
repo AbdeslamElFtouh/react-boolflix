@@ -1,10 +1,10 @@
 import { Outlet } from "react-router";
-import SearchBar from '../components/SearchBar.jsx'
+import Header from '../components/Header.jsx'
 
 function MainLayout({search, searchHandler, allFictionsHandler}) {
     return (
         <>
-            <SearchBar
+            <Header
                 search={search}
                 searchHandler={searchHandler}
                 allFictionsHandler={allFictionsHandler}

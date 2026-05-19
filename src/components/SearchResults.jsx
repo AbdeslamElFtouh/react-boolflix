@@ -11,7 +11,6 @@ const langFlag = {
     ja: 'jp',
     ko: 'kr',
     ar: 'sa',
-    br: 'br',
 };
 
 const IMG_URL = 'https://image.tmdb.org/t/p/';
@@ -39,11 +38,11 @@ function SearchResults({ allFictions }) {
 
                     for (let i = 1; i <= 5; i++) {
                         if (votoInQuinti >= i) {
-                            votoInStelle.push(<i className='bi bi-star-fill text-warning'></i>);
+                            votoInStelle.push(<i key={i} className='bi bi-star-fill text-warning'></i>);
                         } else if (votoInQuinti >= i - 0.5) {
-                            votoInStelle.push(<i className='bi bi-star-half text-warning'></i>);
+                            votoInStelle.push(<i key={i} className='bi bi-star-half text-warning'></i>);
                         } else {
-                            votoInStelle.push(<i className='bi bi-star text-warning'></i>);
+                            votoInStelle.push(<i key={i} className='bi bi-star text-warning'></i>);
                         }
                     }
 

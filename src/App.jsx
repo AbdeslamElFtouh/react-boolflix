@@ -23,7 +23,6 @@ function App() {
         return response.json()
       })
       .then((data) => {
-        console.log('ho fetchato i film')
         console.log(data.results)
         setMovies(data.results);
       })
